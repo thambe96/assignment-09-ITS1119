@@ -27,6 +27,7 @@
             width: 200px;
             height: 50px;
             border: 1px solid black;
+            color: darkred;
         }
 
         section {
@@ -55,6 +56,60 @@
     <div></div>
 </section>
 
+<script>
 
+    // let colors = ["#f2d7d5", "#d98880", "#7b241c", "#8B0000", "red"];
+
+    let activeIndex = 0;
+    let direction = 1;
+
+    const updateColors = () => {
+
+        // let lastLetter = colors.pop();
+        // colors.unshift(lastLetter);
+
+
+        // colors.map((r, index) => {document.getElementsByTagName('div')[index].style.background = r})
+
+
+        let elements = document.getElementsByTagName('div');
+
+
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].style.backgroundColor = 'white';
+
+        }
+
+        elements[activeIndex].style.backgroundColor = 'red';
+
+        if (activeIndex - 1 >= 0) {
+            elements[activeIndex - 1].style.backgroundColor = 'pink';
+        }
+
+        if (activeIndex + 1 >= elements.length) {
+            elements[activeIndex + 1].style.backgroundColor = 'pink';
+        }
+
+
+        activeIndex += direction;
+         if (activeIndex === elements.length -1 || activeIndex === 0) {
+             direction *= -1;
+         }
+
+
+
+
+
+
+    }
+
+    setInterval(updateColors, 300);
+
+
+
+
+
+
+</script>
 </body>
 </html>
